@@ -1,6 +1,7 @@
 import random
 import numpy as np
 
+
 def get_rand_patch(img, mask, sz=160):
     """
     :param img: ndarray with shape (x_sz, y_sz, num_channels)
@@ -15,16 +16,17 @@ def get_rand_patch(img, mask, sz=160):
     patch_mask = mask[xc:(xc + sz), yc:(yc + sz)]
 
     # Apply some random transformations
-    random_transformation = np.random.randint(1,8)
-    if random_transformation == 1:  # reverse first dimension
-        patch_img = patch_img[::-1,:,:]
-        patch_mask = patch_mask[::-1,:,:]
-    elif random_transformation == 2:    # reverse second dimension
-        patch_img = patch_img[:,::-1,:]
-        patch_mask = patch_mask[:,::-1,:]
-    elif random_transformation == 3:    # transpose(interchange) first and second dimensions
-        patch_img = patch_img.transpose([1,0,2])
-        patch_mask = patch_mask.transpose([1,0,2])
+    random_transformation = np.random.randint(1, 8)
+    if random_transformation == 1:  # reverse first dimension (mirror on y axis)
+        patch_img = patch_img[::-1, :, :]
+        patch_mask = patch_mask[::-1, :, :]
+    elif random_transformation == 2:    # reverse second dimension (mirror on x)
+        patch_img = patch_img[:, ::-1, :]
+        patch_mask = patch_mask[:, ::-1, :]
+    # transpose(interchange) first and second dimensions
+    elif random_transformation == 3:
+        patch_img = patch_img.transpose([1, 0, 2])
+        patch_mask = patch_mask.transpose([1, 0, 2])
     elif random_transformation == 4:
         patch_img = np.rot90(patch_img, 1)
         patch_mask = np.rot90(patch_mask, 1)
@@ -36,6 +38,8 @@ def get_rand_patch(img, mask, sz=160):
         patch_mask = np.rot90(patch_mask, 3)
     else:
         pass
+
+    # tbc: compress allong axis, combine
 
     return patch_img, patch_mask
 
@@ -54,5 +58,3 @@ def get_patches(x_dict, y_dict, n_patches, sz=160):
         total_patches += 1
     print('Generated {} patches'.format(total_patches))
     return np.array(x), np.array(y)
-
-
