@@ -23,10 +23,10 @@ def get_model():
 N_BANDS = 8         # bands in training data
 N_CLASSES = 5       # buildings, roads, trees, crops and water
 CLASS_WEIGHTS = [0.2, 0.3, 0.1, 0.1, 0.3]
-N_EPOCHS = 150
+N_EPOCHS = 5
 UPCONV = True
 PATCH_SZ = 160      # should divide by 2^4=16
-BATCH_SIZE = 150    # minibatch size
+BATCH_SIZE = 50    # minibatch size
 TRAIN_SZ = 4000     # train size
 VAL_SZ = 1000       # validation size
 

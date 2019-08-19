@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+*.csv
+*.csv
+*.tif
+*.tif
+*.csv
+*.IFP14
+*.hdf5
+*.tif
+*.csv

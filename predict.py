@@ -115,5 +115,5 @@ if __name__ == '__main__':
     #map = picture_from_mask(mask, 0.5)
 
     #tiff.imsave('result.tif', (255*mask).astype('uint8'))
-    tiff.imsave('result.tif', (255*mymat).astype('uint8'))
-    tiff.imsave('map.tif', map)
+    tiff.imsave('result2.tif', (255*mymat).astype('uint8'))
+    tiff.imsave('map2.tif', map)
